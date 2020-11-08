@@ -88,7 +88,7 @@ An app that allows users to browse through different databases, create curated l
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/LibX-Library-of-Alexandria/LibX/Wireframe.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
