@@ -14,7 +14,7 @@ Original App Design Project - README Template
 An app that allows users to browse through different databases, create curated lists, and share their lists with friends and other users.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
+
 - **Category:** Lifestyle
 - **Mobile:** Real-time
 - **Story:** Share preferences, discover new content, and stay connected with friends and family; amalgamation of all interests
@@ -73,6 +73,8 @@ An app that allows users to browse through different databases, create curated l
 * Search
 * Lists
 * Users *
+
+*Additional feature
 
 **Flow Navigation** (Screen to Screen)
 
