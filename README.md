@@ -89,8 +89,7 @@ An app that allows users to browse through different databases, create curated l
     * Details screens
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<https://paste.pics/364da4974a5f4f9a7c88f3b11318b95f>
 
 ### [BONUS] Digital Wireframes & Mockups
 
