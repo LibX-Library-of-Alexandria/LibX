@@ -74,7 +74,7 @@ An app that allows users to browse through different databases, create curated l
 * Lists
 * Users *
 
-*Additional feature
+\*= Additional feature
 
 **Flow Navigation** (Screen to Screen)
 
