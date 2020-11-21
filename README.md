@@ -171,4 +171,9 @@ An app that allows users to browse through different databases, create curated l
 | GET       | Base URL | Gets latest TV shows
 
 * Song API
-    Base URL = `` //TBD
+    Base URL = 'http://ws.audioscrobbler.com/2.0/'
+
+| HTTP Verb | Endpoint | Description |
+| --------- | -------- | ----------- |
+| GET       | track.getInfo  | Gets song info that corressponds to the passed artist and song name 
+| GET       | chart.getTopArtists | Gets top chart artists
