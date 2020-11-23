@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F94DB7C9ADDEC95736BEAC1 /* Pods_LibXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF1A3A5CD6F9734F3ECD4 /* Pods_LibXTests.framework */; };
 		5C353498B3BC3F0883419ABB /* Pods_LibX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479FE02EBF8460418E553A7 /* Pods_LibX.framework */; };
+		8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4012256C71B800F57905 /* MenuCell.swift */; };
 		DC302337C04798FF5C3CF70A /* Pods_LibX_LibXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5076B4DC2E3E6C800CD8A9 /* Pods_LibX_LibXUITests.framework */; };
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		608E69FA4155417181585F77 /* Pods-LibX-LibXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX-LibXUITests.debug.xcconfig"; path = "Target Support Files/Pods-LibX-LibXUITests/Pods-LibX-LibXUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73DAE83582E470B633CE798E /* Pods-LibX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX.release.xcconfig"; path = "Target Support Files/Pods-LibX/Pods-LibX.release.xcconfig"; sourceTree = "<group>"; };
 		8479FE02EBF8460418E553A7 /* Pods_LibX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8C4012256C71B800F57905 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = LibX/Cells/MenuCell.swift; sourceTree = SOURCE_ROOT; };
 		BA7EF1A3A5CD6F9734F3ECD4 /* Pods_LibXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7856A3F5ED28C1E79270DE /* Pods-LibXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibXTests.release.xcconfig"; path = "Target Support Files/Pods-LibXTests/Pods-LibXTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6FED8A0668E4167BB1AE126 /* Pods-LibX-LibXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX-LibXUITests.release.xcconfig"; path = "Target Support Files/Pods-LibX-LibXUITests/Pods-LibX-LibXUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A8C4017256C71BF00F57905 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8A8C4012256C71B800F57905 /* MenuCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8A9F065A256B168400B116A0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD334750256AF99400BF0C2C /* MenuViewController.swift */,
+				DD33473D256AF0CA00BF0C2C /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8A9F065B256B16A400B116A0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DD33470D256AED4D00BF0C2C /* Main.storyboard */,
+				DD334712256AED4F00BF0C2C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		C48CE16904723D98F182AF21 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,13 +169,12 @@
 		DD334706256AED4D00BF0C2C /* LibX */ = {
 			isa = PBXGroup;
 			children = (
+				DD334710256AED4F00BF0C2C /* Assets.xcassets */,
 				DD334707256AED4D00BF0C2C /* AppDelegate.swift */,
 				DD334709256AED4D00BF0C2C /* SceneDelegate.swift */,
-				DD33470D256AED4D00BF0C2C /* Main.storyboard */,
-				DD334750256AF99400BF0C2C /* MenuViewController.swift */,
-				DD33473D256AF0CA00BF0C2C /* LoginViewController.swift */,
-				DD334710256AED4F00BF0C2C /* Assets.xcassets */,
-				DD334712256AED4F00BF0C2C /* LaunchScreen.storyboard */,
+				8A9F065A256B168400B116A0 /* ViewControllers */,
+				8A8C4017256C71BF00F57905 /* Cells */,
+				8A9F065B256B16A400B116A0 /* Storyboards */,
 				DD334715256AED4F00BF0C2C /* Info.plist */,
 			);
 			path = LibX;
@@ -410,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD33473E256AF0CA00BF0C2C /* LoginViewController.swift in Sources */,
+				8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */,
 				DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */,
 				DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */,
 				DD334751256AF99400BF0C2C /* MenuViewController.swift in Sources */,
