@@ -10,6 +10,8 @@
 		3F94DB7C9ADDEC95736BEAC1 /* Pods_LibXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7EF1A3A5CD6F9734F3ECD4 /* Pods_LibXTests.framework */; };
 		5C353498B3BC3F0883419ABB /* Pods_LibX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479FE02EBF8460418E553A7 /* Pods_LibX.framework */; };
 		8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4012256C71B800F57905 /* MenuCell.swift */; };
+		8A8C401D256C79E200F57905 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C401C256C79E200F57905 /* ListsViewController.swift */; };
+		8A8C403D256C7B3800F57905 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C403C256C7B3800F57905 /* ListCell.swift */; };
 		DC302337C04798FF5C3CF70A /* Pods_LibX_LibXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5076B4DC2E3E6C800CD8A9 /* Pods_LibX_LibXUITests.framework */; };
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
@@ -46,6 +48,8 @@
 		73DAE83582E470B633CE798E /* Pods-LibX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX.release.xcconfig"; path = "Target Support Files/Pods-LibX/Pods-LibX.release.xcconfig"; sourceTree = "<group>"; };
 		8479FE02EBF8460418E553A7 /* Pods_LibX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8C4012256C71B800F57905 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = LibX/Cells/MenuCell.swift; sourceTree = SOURCE_ROOT; };
+		8A8C401C256C79E200F57905 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
+		8A8C403C256C7B3800F57905 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		BA7EF1A3A5CD6F9734F3ECD4 /* Pods_LibXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7856A3F5ED28C1E79270DE /* Pods-LibXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibXTests.release.xcconfig"; path = "Target Support Files/Pods-LibXTests/Pods-LibXTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6FED8A0668E4167BB1AE126 /* Pods-LibX-LibXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX-LibXUITests.release.xcconfig"; path = "Target Support Files/Pods-LibX-LibXUITests/Pods-LibX-LibXUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				8A8C4012256C71B800F57905 /* MenuCell.swift */,
+				8A8C403C256C7B3800F57905 /* ListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				DD334750256AF99400BF0C2C /* MenuViewController.swift */,
+				8A8C401C256C79E200F57905 /* ListsViewController.swift */,
 				DD33473D256AF0CA00BF0C2C /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
@@ -438,6 +444,8 @@
 			files = (
 				DD33473E256AF0CA00BF0C2C /* LoginViewController.swift in Sources */,
 				8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */,
+				8A8C401D256C79E200F57905 /* ListsViewController.swift in Sources */,
+				8A8C403D256C7B3800F57905 /* ListCell.swift in Sources */,
 				DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */,
 				DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */,
 				DD334751256AF99400BF0C2C /* MenuViewController.swift in Sources */,
