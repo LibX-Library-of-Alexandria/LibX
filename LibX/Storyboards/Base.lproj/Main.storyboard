@@ -122,7 +122,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bl6-Ra-ktc"/>
                     <connections>
-                        <outlet property="tableview" destination="QAX-va-g9P" id="Kh5-5Q-c73"/>
+                        <outlet property="tableView" destination="QAX-va-g9P" id="Sah-YB-tPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bj3-OR-V3Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

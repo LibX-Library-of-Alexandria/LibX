@@ -9,7 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var categories : [[String:Any]] = [
          ["title": "Movies", "image": ""],
@@ -21,8 +21,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableview.delegate = self
-        self.tableview.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,7 +30,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
         
         let cat = categories[indexPath.row]
         
