@@ -42,14 +42,29 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Sends user to respective database based on selected cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if (categories[indexPath.row]["title"] as! String == "Movies"){
+            performSegue(withIdentifier: "MoviesViewController",
+                         sender: MenuCell.self)
+        } else if (categories[indexPath.row]["title"] as! String == "TV Shows"){
+            performSegue(withIdentifier: "ShowsViewController",
+                         sender: MenuCell.self)
+        } else if (categories[indexPath.row]["title"] as! String == "Books"){
+            performSegue(withIdentifier: "BooksViewController",
+                         sender: MenuCell.self)
+        } else {
+            performSegue(withIdentifier: "SongsViewController",
+                         sender: MenuCell.self)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        print("Seguing to different databases")
     }
-    */
 
 }
