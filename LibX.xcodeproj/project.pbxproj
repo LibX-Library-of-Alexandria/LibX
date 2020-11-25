@@ -16,6 +16,7 @@
 		8A8C404D256D854200F57905 /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C404C256D854200F57905 /* ShowsViewController.swift */; };
 		8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4054256D855D00F57905 /* BooksViewController.swift */; };
 		8A8C405D256D857500F57905 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C405C256D857500F57905 /* SongsViewController.swift */; };
+		8A8C4073256DF05500F57905 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4072256DF05500F57905 /* BookCell.swift */; };
 		DC302337C04798FF5C3CF70A /* Pods_LibX_LibXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5076B4DC2E3E6C800CD8A9 /* Pods_LibX_LibXUITests.framework */; };
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
@@ -58,6 +59,7 @@
 		8A8C404C256D854200F57905 /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		8A8C4054256D855D00F57905 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		8A8C405C256D857500F57905 /* SongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
+		8A8C4072256DF05500F57905 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		BA7EF1A3A5CD6F9734F3ECD4 /* Pods_LibXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7856A3F5ED28C1E79270DE /* Pods-LibXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibXTests.release.xcconfig"; path = "Target Support Files/Pods-LibXTests/Pods-LibXTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6FED8A0668E4167BB1AE126 /* Pods-LibX-LibXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX-LibXUITests.release.xcconfig"; path = "Target Support Files/Pods-LibX-LibXUITests/Pods-LibX-LibXUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				8A8C4012256C71B800F57905 /* MenuCell.swift */,
 				8A8C403C256C7B3800F57905 /* ListCell.swift */,
+				8A8C4072256DF05500F57905 /* BookCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A8C4073256DF05500F57905 /* BookCell.swift in Sources */,
 				8A8C405D256D857500F57905 /* SongsViewController.swift in Sources */,
 				8A8C404D256D854200F57905 /* ShowsViewController.swift in Sources */,
 				DD33473E256AF0CA00BF0C2C /* LoginViewController.swift in Sources */,

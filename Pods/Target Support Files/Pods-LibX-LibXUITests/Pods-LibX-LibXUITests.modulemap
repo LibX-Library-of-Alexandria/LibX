@@ -1,0 +1,6 @@
+framework module Pods_LibX_LibXUITests {
+  umbrella header "Pods-LibX-LibXUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
