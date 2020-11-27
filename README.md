@@ -123,7 +123,7 @@ An app that allows users to browse through different databases, create curated l
 | Property | Type     | Description |
 | -------- | -------- | ------------|
 | objectId | String   | unique id for the user object *
-| cellId   | String   | cell id from api (?)
+| cellId   | String   | Item's id from api
 | details  | JSON Object | item's specific details information
 | list     | Pointer to List | points to list item belongs to
 |createdAt | DateTime | date when post is created *
