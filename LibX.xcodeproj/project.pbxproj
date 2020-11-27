@@ -18,6 +18,8 @@
 		8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4054256D855D00F57905 /* BooksViewController.swift */; };
 		8A8C405D256D857500F57905 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C405C256D857500F57905 /* SongsViewController.swift */; };
 		B7286E45256E27F500E258BE /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7286E44256E27F500E258BE /* MovieCell.swift */; };
+		B77E46B425704CB5009275A4 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E46B325704CB5009275A4 /* ShowDetailsViewController.swift */; };
+		B77E46BC2570588E009275A4 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E46BB2570588E009275A4 /* ShowCell.swift */; };
 		B788FA73256EC74000350DBB /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B788FA72256EC74000350DBB /* MovieDetailsViewController.swift */; };
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
@@ -62,6 +64,8 @@
 		99F25B6B434D9321873F8659 /* Pods_LibXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13A53909BC1077C02C0450C /* Pods_LibX_LibXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibX_LibXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7286E44256E27F500E258BE /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		B77E46B325704CB5009275A4 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		B77E46BB2570588E009275A4 /* ShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
 		B788FA72256EC74000350DBB /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		C357BA58BD123DF5F5AD7846 /* Pods-LibX-LibXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibX-LibXUITests.debug.xcconfig"; path = "Target Support Files/Pods-LibX-LibXUITests/Pods-LibX-LibXUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD334704256AED4D00BF0C2C /* LibX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +121,7 @@
 				8A8C4012256C71B800F57905 /* MenuCell.swift */,
 				8A8C403C256C7B3800F57905 /* ListCell.swift */,
 				B7286E44256E27F500E258BE /* MovieCell.swift */,
+				B77E46BB2570588E009275A4 /* ShowCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 				8A8C4044256D851E00F57905 /* MoviesViewController.swift */,
 				B788FA72256EC74000350DBB /* MovieDetailsViewController.swift */,
 				8A8C404C256D854200F57905 /* ShowsViewController.swift */,
+				B77E46B325704CB5009275A4 /* ShowDetailsViewController.swift */,
 				8A8C4054256D855D00F57905 /* BooksViewController.swift */,
 				8A8C405C256D857500F57905 /* SongsViewController.swift */,
 			);
@@ -466,12 +472,14 @@
 				B7286E45256E27F500E258BE /* MovieCell.swift in Sources */,
 				DD33473E256AF0CA00BF0C2C /* LoginViewController.swift in Sources */,
 				8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */,
+				B77E46BC2570588E009275A4 /* ShowCell.swift in Sources */,
 				8A8C401D256C79E200F57905 /* ListsViewController.swift in Sources */,
 				8A8C403D256C7B3800F57905 /* ListCell.swift in Sources */,
 				8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */,
 				DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */,
 				DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */,
 				DD334751256AF99400BF0C2C /* MenuViewController.swift in Sources */,
+				B77E46B425704CB5009275A4 /* ShowDetailsViewController.swift in Sources */,
 				8A8C4045256D851E00F57905 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
