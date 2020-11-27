@@ -1,13 +1,13 @@
 //
-//  MovieCell.swift
+//  ShowCell.swift
 //  LibX
 //
-//  Created by Lisa Fabien on 11/25/20.
+//  Created by Lisa Fabien on 11/26/20.
 //
 
 import UIKit
 
-class MovieCell: UITableViewCell {
+class ShowCell: UITableViewCell {
 
     
     @IBOutlet weak var posterView: UIImageView!
@@ -19,19 +19,15 @@ class MovieCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         posterView.layer.cornerRadius = 12
         cardView.layer.cornerRadius = 12
         cardView.layer.masksToBounds = true
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    
-
     }
 
 }
