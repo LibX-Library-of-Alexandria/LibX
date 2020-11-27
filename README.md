@@ -30,7 +30,8 @@ An app that allows users to browse through different databases, create curated l
 
 * User can log into their account
 * User can create curated lists of items
-* User can search through a catalogue of movies, books, TV Shows, and Songs
+* User can search through a catalogue of movies, books, TV Shows, and Restaurants
+* User can search for movie, book, TV show, or restaurant within specific database
 * User can see item details
 * User can add to / remove items from lists
 * User can share lists with people
@@ -38,8 +39,8 @@ An app that allows users to browse through different databases, create curated l
 
 **Optional Nice-to-have Stories**
 
-* User can search through database of restaurants
-*  User can follow/friend other users and see other lists
+* User can search through database of songs
+* User can follow/friend other users and see other lists
 * User can associate a list with a single item
 * User is able to sort items in list by date, alphabetical order, etc.
 * User can “check off” items in list
@@ -74,6 +75,8 @@ An app that allows users to browse through different databases, create curated l
 * Lists
 * Users *
 
+\* = Additional feature
+
 **Flow Navigation** (Screen to Screen)
 
 * Search
@@ -89,10 +92,6 @@ An app that allows users to browse through different databases, create curated l
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
 
 ## Schema 
 
@@ -134,10 +133,6 @@ An app that allows users to browse through different databases, create curated l
 \* = Default field
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
-
 * User Lists Screen
     * (Read/GET) Query all lists created by user
     * (Create/POST) Create a new list
@@ -156,7 +151,7 @@ An app that allows users to browse through different databases, create curated l
 
 | HTTP Verb | Endpoint | Description |
 | --------- | -------- | ----------- |
-| GET       | intitle:\<title\>  | Gets books with text in title
+| GET       | <user input>  | Gets books with user input's text in title
 | GET       | subject:\<subject\>  | Gets books related to specific subject
 
 * The Movie Database API
@@ -170,8 +165,17 @@ An app that allows users to browse through different databases, create curated l
 | GET       | Base URL  | Gets latest movies
 | GET       | Base URL | Gets latest TV shows
 
+* Yelp API
+    Base URL = `https://api.yelp.com/v3/transactions/delivery/search?`
+    
+| HTTP Verb | Endpoint | Description |
+| --------- | -------- | ----------- |
+| GET       | latitue=<coordinates>  | Gets restaurants close to coordinates
+| GET       | longitude=<coordinates> | Gets restaurants close to coordinates
+
+##### Additional API Endpoints
 * Song API
-    Base URL = 'http://ws.audioscrobbler.com/2.0/'
+    Base URL = `http://ws.audioscrobbler.com/2.0/`
 
 | HTTP Verb | Endpoint | Description |
 | --------- | -------- | ----------- |
