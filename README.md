@@ -184,9 +184,8 @@ An app that allows users to browse through different databases, create curated l
 ## Sprints
 
 ### Sprint 1
-
--[x] User can log into their account
--[x] User can create curated lists of items
--[x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
+- [x] User can log into their account
+- [x] User can create curated lists of items
+- [x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
 
 <img src="http://g.recordit.co/ZgONaEojBW.gif">
