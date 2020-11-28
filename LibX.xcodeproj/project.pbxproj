@@ -18,11 +18,10 @@
 		8A8C404D256D854200F57905 /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C404C256D854200F57905 /* ShowsViewController.swift */; };
 		8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4054256D855D00F57905 /* BooksViewController.swift */; };
 		8A8C405D256D857500F57905 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C405C256D857500F57905 /* SongsViewController.swift */; };
-
 		8A8C4073256DF05500F57905 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C4072256DF05500F57905 /* BookCell.swift */; };
 		8A8C40A225716E2200F57905 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C40A125716E2200F57905 /* MovieCell.swift */; };
 		ABECE4ADA3D5082D93494160 /* Pods_LibX_LibXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADE9F07D6ED78904C6676B5 /* Pods_LibX_LibXUITests.framework */; };
-
+		B752A56E2572043000E52679 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752A56D2572043000E52679 /* ShowCell.swift */; };
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
 		DD33470F256AED4D00BF0C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD33470D256AED4D00BF0C2C /* Main.storyboard */; };
@@ -65,10 +64,9 @@
 		8A8C404C256D854200F57905 /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		8A8C4054256D855D00F57905 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		8A8C405C256D857500F57905 /* SongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
-
 		8A8C4072256DF05500F57905 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		8A8C40A125716E2200F57905 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCell.swift; path = LibX/Cells/MovieCell.swift; sourceTree = SOURCE_ROOT; };
-
+		B752A56D2572043000E52679 /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowCell.swift; path = LibX/Cells/ShowCell.swift; sourceTree = SOURCE_ROOT; };
 		DD334704256AED4D00BF0C2C /* LibX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD334707256AED4D00BF0C2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD334709256AED4D00BF0C2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,10 +122,8 @@
 			children = (
 				8A8C4012256C71B800F57905 /* MenuCell.swift */,
 				8A8C403C256C7B3800F57905 /* ListCell.swift */,
-
 				8A8C4072256DF05500F57905 /* BookCell.swift */,
 				8A8C40A125716E2200F57905 /* MovieCell.swift */,
-
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -140,7 +136,7 @@
 				DD33473D256AF0CA00BF0C2C /* LoginViewController.swift */,
 				8A8C4044256D851E00F57905 /* MoviesViewController.swift */,
 				8A8C404C256D854200F57905 /* ShowsViewController.swift */,
-				B77E46B325704CB5009275A4 /* ShowDetailsViewController.swift */,
+				B752A56D2572043000E52679 /* ShowCell.swift */,
 				8A8C4054256D855D00F57905 /* BooksViewController.swift */,
 				8A8C405C256D857500F57905 /* SongsViewController.swift */,
 			);
@@ -477,14 +473,13 @@
 				8A8C404D256D854200F57905 /* ShowsViewController.swift in Sources */,
 				DD33473E256AF0CA00BF0C2C /* LoginViewController.swift in Sources */,
 				8A8C4013256C71B800F57905 /* MenuCell.swift in Sources */,
-				B77E46BC2570588E009275A4 /* ShowCell.swift in Sources */,
 				8A8C401D256C79E200F57905 /* ListsViewController.swift in Sources */,
 				8A8C403D256C7B3800F57905 /* ListCell.swift in Sources */,
 				8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */,
 				DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */,
+				B752A56E2572043000E52679 /* ShowCell.swift in Sources */,
 				DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */,
 				DD334751256AF99400BF0C2C /* MenuViewController.swift in Sources */,
-				B77E46B425704CB5009275A4 /* ShowDetailsViewController.swift in Sources */,
 				8A8C4045256D851E00F57905 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
