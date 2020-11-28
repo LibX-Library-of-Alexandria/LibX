@@ -6,8 +6,8 @@ target 'LibX' do
   use_frameworks!
 
   # Pods for LibX
-pod 'AlamofireImage'
-pod 'Parse'
+  pod "AlamofireImage"
+  pod "Parse"
 
   target 'LibXTests' do
     inherit! :search_paths

@@ -64,7 +64,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        print("Seguing to different databases")
+        print("Seguing to different database")
     }
 
 }
