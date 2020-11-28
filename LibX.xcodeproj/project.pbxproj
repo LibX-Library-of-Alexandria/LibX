@@ -22,6 +22,10 @@
 		8A8C40A225716E2200F57905 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C40A125716E2200F57905 /* MovieCell.swift */; };
 		8A8C40AD2572079C00F57905 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C40AC2572079C00F57905 /* ShowCell.swift */; };
 		ABECE4ADA3D5082D93494160 /* Pods_LibX_LibXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADE9F07D6ED78904C6676B5 /* Pods_LibX_LibXUITests.framework */; };
+<<<<<<< HEAD
+=======
+		B752A56E2572043000E52679 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752A56D2572043000E52679 /* ShowCell.swift */; };
+>>>>>>> e3d9622a0b42b01e9604f03340869b912be16205
 		DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334707256AED4D00BF0C2C /* AppDelegate.swift */; };
 		DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD334709256AED4D00BF0C2C /* SceneDelegate.swift */; };
 		DD33470F256AED4D00BF0C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD33470D256AED4D00BF0C2C /* Main.storyboard */; };
@@ -66,7 +70,11 @@
 		8A8C405C256D857500F57905 /* SongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
 		8A8C4072256DF05500F57905 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		8A8C40A125716E2200F57905 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCell.swift; path = LibX/Cells/MovieCell.swift; sourceTree = SOURCE_ROOT; };
+<<<<<<< HEAD
 		8A8C40AC2572079C00F57905 /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowCell.swift; path = LibX/Cells/ShowCell.swift; sourceTree = SOURCE_ROOT; };
+=======
+		B752A56D2572043000E52679 /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowCell.swift; path = LibX/Cells/ShowCell.swift; sourceTree = SOURCE_ROOT; };
+>>>>>>> e3d9622a0b42b01e9604f03340869b912be16205
 		DD334704256AED4D00BF0C2C /* LibX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD334707256AED4D00BF0C2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD334709256AED4D00BF0C2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +132,10 @@
 				8A8C403C256C7B3800F57905 /* ListCell.swift */,
 				8A8C4072256DF05500F57905 /* BookCell.swift */,
 				8A8C40A125716E2200F57905 /* MovieCell.swift */,
+<<<<<<< HEAD
 				8A8C40AC2572079C00F57905 /* ShowCell.swift */,
+=======
+>>>>>>> e3d9622a0b42b01e9604f03340869b912be16205
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -137,6 +148,10 @@
 				DD33473D256AF0CA00BF0C2C /* LoginViewController.swift */,
 				8A8C4044256D851E00F57905 /* MoviesViewController.swift */,
 				8A8C404C256D854200F57905 /* ShowsViewController.swift */,
+<<<<<<< HEAD
+=======
+				B752A56D2572043000E52679 /* ShowCell.swift */,
+>>>>>>> e3d9622a0b42b01e9604f03340869b912be16205
 				8A8C4054256D855D00F57905 /* BooksViewController.swift */,
 				8A8C405C256D857500F57905 /* SongsViewController.swift */,
 			);
@@ -477,7 +492,11 @@
 				8A8C403D256C7B3800F57905 /* ListCell.swift in Sources */,
 				8A8C4055256D855D00F57905 /* BooksViewController.swift in Sources */,
 				DD334708256AED4D00BF0C2C /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				8A8C40AD2572079C00F57905 /* ShowCell.swift in Sources */,
+=======
+				B752A56E2572043000E52679 /* ShowCell.swift in Sources */,
+>>>>>>> e3d9622a0b42b01e9604f03340869b912be16205
 				DD33470A256AED4D00BF0C2C /* SceneDelegate.swift in Sources */,
 				DD334751256AF99400BF0C2C /* MenuViewController.swift in Sources */,
 				8A8C4045256D851E00F57905 /* MoviesViewController.swift in Sources */,

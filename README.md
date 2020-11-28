@@ -180,3 +180,16 @@ An app that allows users to browse through different databases, create curated l
 | --------- | -------- | ----------- |
 | GET       | track.getInfo  | Gets song info that corressponds to the passed artist and song name 
 | GET       | chart.getTopArtists | Gets top chart artists
+
+## Sprints
+
+### Sprint 1
+- [x] User can log into their account
+- [x] User can create curated lists of items
+- [x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
+
+<img src="http://g.recordit.co/ZgONaEojBW.gif">
+
+#### Additional Notes
+* Switched from Last.fm API to Yelp API for last database feature (will be implemented in next sprint)
+* Auto-layouts for cells to be finalized in next sprint
