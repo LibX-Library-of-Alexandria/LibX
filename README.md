@@ -189,4 +189,4 @@ An app that allows users to browse through different databases, create curated l
 -[x] User can create curated lists of items
 -[x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
 
-<img src="http://g.recordit.co/ZgONaEojBW.gif" width=600>
+<img src="http://g.recordit.co/ZgONaEojBW.gif">
