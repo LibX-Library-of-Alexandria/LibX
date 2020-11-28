@@ -180,3 +180,13 @@ An app that allows users to browse through different databases, create curated l
 | --------- | -------- | ----------- |
 | GET       | track.getInfo  | Gets song info that corressponds to the passed artist and song name 
 | GET       | chart.getTopArtists | Gets top chart artists
+
+## Sprints
+
+### Sprint 1
+
+-[x] User can log into their account
+-[x] User can create curated lists of items
+-[x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
+
+<img src="http://g.recordit.co/ZgONaEojBW.gif" width=600>
