@@ -189,6 +189,7 @@ An app that allows users to browse through different databases, create curated l
 - [x] User can search through a catalogue of movies, books, TV Shows, and Restaurants
 
 <img src="http://g.recordit.co/ZgONaEojBW.gif">
+
 #### Additional Notes
 * Switched from Last.fm API to Yelp API for last database feature (will be implemented in next sprint)
 * Auto-layouts for cells to be finalized in next sprint
