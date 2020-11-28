@@ -8,11 +8,12 @@
 import UIKit
 import AlamofireImage
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     var movies = [[String:Any]]()
@@ -24,6 +25,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         
         // Do any additional setup after loading the view.
+        //SearchBar setup
+                searchBar.delegate = self
+                //searchBar.searchTextField.layer.cornerRadius = 20
+                //searchBar.searchTextField.layer.masksToBounds = true
+        
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -72,6 +78,68 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
         
+    }
+    
+    func searchResultsAPI(){
+        print("Sending search")
+        
+        let input = searchBar.text
+        var filteredInput = removeSpecialCharsFromString(text: input ?? "").lowercased() //Removes special chars & brings to lowercase
+        filteredInput = filteredInput.trimmingCharacters(in: .whitespacesAndNewlines) //Removes beginning/trailing whitespace
+        filteredInput = filteredInput.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil) //Replaces spaces w/ "+"
+        
+        let apiKey = "81eb8300739b19966e28c34a105320d0"
+        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=" + apiKey + "&language=en-US&page=1&query=" + filteredInput + "&include_adult=false"
+     
+        
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+           // This will run when the network request returns
+           if let error = error {
+              print(error.localizedDescription) //Alert user w/ UI
+           } else if let data = data {
+              let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            
+            //Sets books to books in API call
+            if let movies = dataDictionary["items"] as? [[String:Any]] {
+                self.movies = movies
+                
+                //Updates app so that tableView isn't 0 (calls tableView funcs again)
+                self.tableView.reloadData()
+                
+                print(dataDictionary)
+                print(filteredInput)
+                print(self.movies.count)
+            } else { //Invalid user input
+                let alert = UIAlertController(title: "Opps!", message: "Please check your spelling", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+           }
+        }
+        task.resume()
+        searchBarCancelButtonClicked(searchBar)
+    }
+    
+    func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+        return String(text.filter {okayChars.contains($0) })
+    }
+    
+    //Search bar cancel button
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+        self.searchBar.becomeFirstResponder()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 
     /*
