@@ -56,7 +56,7 @@ An app that allows users to browse through different databases, create curated l
    * User can log into their account
    * User can create a new account
 * Stream
-   * User can search through a catalogue of movies, books, TV Shows, Songs, and Restaurants
+   * User can search through a catalogue of movies, books, TV Shows, and Restaurants
    * User can create curated lists of items
    * User can add to / remove items from lists
     * User can share lists with people
