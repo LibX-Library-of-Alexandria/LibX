@@ -90,7 +90,7 @@ An app that allows users to browse through different databases, create curated l
     * Details screens
 
 ## Wireframes
-<img src="http://g.recordit.co/XHKmqrzLao.gif" width=600>
+<img src="http://g.recordit.co/fxOOlxBvFk.gif" width=600>
 
 ## Schema 
 
