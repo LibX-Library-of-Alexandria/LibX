@@ -34,8 +34,20 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //SearchBar setup
         searchBar.delegate = self
-        //searchBar.searchTextField.layer.cornerRadius = 20
-        //searchBar.searchTextField.layer.masksToBounds = true
+        searchBar.barTintColor = UIColor(named: "TableViewColor")
+        searchBar.tintColor = UIColor.white
+        //searchBar.setImage(UIImage(named: "my_search_icon"), for: UISearchBarIcon.search, state: .normal) //Set search icon
+        //Customize searchBar textfield
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            textfield.backgroundColor = UIColor.white
+            textfield.layer.cornerRadius = 18
+            textfield.layer.masksToBounds = true
+            textfield.placeholder = "Search for books"
+        }
+        //Remove searchBar border
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor(named: "TableViewColor")?.cgColor
         
         retrieveAPI()
     }
@@ -168,15 +180,20 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchBar.resignFirstResponder()
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        print("Segueing to book details")
+        
+        //Gets selected cell
+        let cell = sender as! BookCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let book = books[indexPath.row]
+        
+        //Passes information to BooksDetailsViewController
+        let booksDetailsViewController = segue.destination as! BooksDetailsViewController
+        booksDetailsViewController.book = book
+        
+        //De-highlights selected row
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
 
 }
