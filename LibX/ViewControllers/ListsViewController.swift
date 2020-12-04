@@ -29,7 +29,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         layout.minimumInteritemSpacing = 0
         
         //Width of phone / 2
-        let width = (view.frame.size.width - layout.minimumInteritemSpacing * 2) * (1/2)
+        let width = (collectionView.frame.size.width - layout.minimumInteritemSpacing * 2) * (1/2)
         //Size of each item in collection view
         layout.itemSize = CGSize(width: width, height: width)
     }
@@ -64,7 +64,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < lists.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as! ListCell
-            let list = lists[indexPath.row]
+            let list = lists[(lists.count-1)-indexPath.row]
             
             cell.listImage.layer.cornerRadius = 20
             cell.listImage.layer.masksToBounds = true
@@ -73,6 +73,10 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             
             cell.listTitleLabel.text = list["title"] as! String
             cell.containerView.alpha = 0.5
+            
+            cell.editListButton.alpha = 0.5
+            
+            print(indexPath.row)
             
             return cell
         } else { //Last cell in collectionView
@@ -121,6 +125,9 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
 
+    @IBAction func editList(_ sender: Any) {
+        print("Edit list")
+    }
     /*
     // MARK: - Navigation
 

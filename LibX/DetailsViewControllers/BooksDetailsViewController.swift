@@ -54,13 +54,13 @@ class BooksDetailsViewController: UIViewController {
         bookImage.layer.shadowRadius = 8
         bookImage.layer.shadowPath = UIBezierPath(rect: bookImage.bounds).cgPath
         
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
 //        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
 //            rect = rect.union(view.frame)
 //        }
 //        scrollView.contentSize = contentRect.size
+        
+        //Floating action button
+
     }
     
 
