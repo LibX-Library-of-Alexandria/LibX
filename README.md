@@ -196,10 +196,10 @@ An app that allows users to browse through different databases, create curated l
 
 ### Sprint 2
 - [x] User can search for movie, book, TV show, or restaurant within specific database
-- [x] User can see item details
+- [ ] User can see item details
 
 <img src="https://recordit.co/YxedWiWqz1.gif">
 
 #### Additional Notes
-* Code for the Details Screen needs to be debugged
+* Code for the Movie and Screen Details Screen needs to be debugged (error with optionals)
 
