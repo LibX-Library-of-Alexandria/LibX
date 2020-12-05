@@ -29,7 +29,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         layout.minimumInteritemSpacing = 0
         
         //Width of phone / 2
-        let width = (collectionView.frame.size.width - layout.minimumInteritemSpacing * 2) * (1/2)
+        let width = collectionView.frame.size.width * (1/2)
         //Size of each item in collection view
         layout.itemSize = CGSize(width: width, height: width)
     }
@@ -124,7 +124,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             self.present(alert, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func editList(_ sender: Any) {
         print("Edit list")
     }

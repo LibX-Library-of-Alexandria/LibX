@@ -9,6 +9,7 @@ target 'LibX' do
   pod "AlamofireImage"
   pod "Parse"
   pod 'JJFloatingActionButton'
+  pod 'Floaty', '~> 4.2.0'
 
   target 'LibXTests' do
     inherit! :search_paths
