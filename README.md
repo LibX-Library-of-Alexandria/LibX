@@ -201,5 +201,6 @@ An app that allows users to browse through different databases, create curated l
 <img src="https://recordit.co/YxedWiWqz1.gif">
 
 #### Additional Notes
+* Our updated design for the app reverted to a previous version, will address in last Sprint
 * Code for the Movie and Screen Details Screen needs to be debugged (error with optionals)
 
