@@ -193,3 +193,13 @@ An app that allows users to browse through different databases, create curated l
 #### Additional Notes
 * Switched from Last.fm API to Yelp API for last database feature (will be implemented in next sprint)
 * Auto-layouts for cells to be finalized in next sprint
+
+### Sprint 2
+- [x] User can search for movie, book, TV show, or restaurant within specific database
+- [x] User can see item details
+
+<img src="https://recordit.co/YxedWiWqz1.gif">
+
+#### Additional Notes
+* Code for the Details Screen needs to be debugged
+
