@@ -198,7 +198,7 @@ An app that allows users to browse through different databases, create curated l
 - [x] User can search for movie, book, TV show, or restaurant within specific database
 - [ ] User can see item details
 
-<img src="https://recordit.co/YxedWiWqz1.gif">
+<img src="http://g.recordit.co/2yPeHGcsbQ.gif">
 
 #### Additional Notes
 * Our updated design for the app reverted to a previous version, will address in last Sprint
