@@ -578,7 +578,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.58217239379999997" green="0.68013691899999995" blue="0.79609477520000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" red="0.5607843137254902" green="0.67843137254901964" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="dx3-mh-f1R" firstAttribute="centerX" secondItem="gvE-fT-9W5" secondAttribute="centerX" id="0Dt-qP-EVP"/>
                                                 <constraint firstItem="dx3-mh-f1R" firstAttribute="leading" secondItem="gvE-fT-9W5" secondAttribute="leading" constant="15" id="41g-aQ-3So"/>
