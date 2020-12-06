@@ -7,6 +7,7 @@
 
 import UIKit
 import AlamofireImage
+import JJFloatingActionButton
 
 class BooksDetailsViewController: UIViewController {
 
@@ -60,18 +61,28 @@ class BooksDetailsViewController: UIViewController {
 //        scrollView.contentSize = contentRect.size
         
         //Floating action button
+        let actionButton = JJFloatingActionButton()
 
+        actionButton.addItem(title: "Add Button", image: UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)) { item in
+//            let alert = UIAlertController(title: "Tapped Add Item Button", message: "Example text", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+            
+            self.performSegue(withIdentifier: "addSegue", sender: self)
+        }
+        actionButton.buttonColor = UIColor.systemTeal
+        actionButton.display(inViewController: self)
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let addViewController = segue.destination as! AddViewController
+        addViewController.item = book
     }
-    */
+    
 
 }

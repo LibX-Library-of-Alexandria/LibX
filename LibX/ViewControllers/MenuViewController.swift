@@ -23,6 +23,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        //Removes text in back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

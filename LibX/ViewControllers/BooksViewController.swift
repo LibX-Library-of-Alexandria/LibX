@@ -50,6 +50,9 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchBar.layer.borderColor = UIColor(named: "TableViewColor")?.cgColor
         
         retrieveAPI()
+        
+        //Removes text in back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
