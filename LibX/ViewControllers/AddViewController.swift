@@ -29,8 +29,8 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
         //Space between items in "rows"
         layout.minimumInteritemSpacing = 0
         
-        //Width of phone / 2
-        let width = collectionView.frame.size.width * (1/2)
+        //Width of collectionview / 2
+        let width = (self.view.frame.size.width - 20) * (1/2)
         //Size of each item in collection view
         layout.itemSize = CGSize(width: width, height: width)
         
@@ -105,8 +105,10 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
                     //POST item & creates association w/ list
                     newItem.saveInBackground { (success, error) in
                         if success{
-                            //Not dismissing?
-                            self.dismiss(animated: true, completion: nil)
+                            //self.dismiss(animated: true, completion: nil)
+                            let alert = UIAlertController(title: "Added to List!", message: nil, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                             print("Saved item")
                         } else {
                             print("Could not save item: \(error)")
@@ -115,9 +117,7 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
                 } else { //Item exists in list
                     //Alert user
                     let alert = UIAlertController(title: "This item already exists in this list", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                        self.dismiss(animated: true, completion: nil)
-                    }))
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true)
                 }
             } else {

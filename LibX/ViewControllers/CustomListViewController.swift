@@ -24,7 +24,6 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
-        refreshControl.backgroundColor = UIColor(named: "TableViewColor")
         //Bind refreshControl to action
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
         //Bind control to tableView
@@ -32,7 +31,7 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         listTitleLabel.text = list["title"] as? String
         //Change navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "opal")
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "powder_blue")
         
         retrieveItems()
     }
