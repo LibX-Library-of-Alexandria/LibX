@@ -11,6 +11,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    let defaults = UserDefaults.standard
+    
     var categories : [[String:Any]] = [
          ["title": "Movies", "image": ""],
          ["title": "TV Shows", "image": ""],
@@ -61,6 +63,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                          sender: MenuCell.self)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @IBAction func onLogout(_ sender: Any) {
+        defaults.setValue(false, forKey: "loggedIn")
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

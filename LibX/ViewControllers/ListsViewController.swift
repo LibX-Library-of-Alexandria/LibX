@@ -52,6 +52,8 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        //Change navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "blue1")
         retrieveLists()
     }
     
@@ -147,6 +149,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     
+    //Function for editing lists
     @IBAction func editList(_ sender: Any) {
         let button = sender as! UIButton
         let listNum = button.tag
@@ -164,6 +167,9 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         let changeTitleAction = UIAlertAction(title: "Edit Title", style: .default) { (UIAlertAction) in
             self.editList(result: "title", list: list)
         }
+        let shareList = UIAlertAction(title: "Share", style: .default) { (UIAlertAction) in
+            self.editList(result: "share", list: list)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
             print("Cancel")
         }
@@ -171,6 +177,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         alert.addAction(deleteListAction)
         alert.addAction(addPhotoAction)
         alert.addAction(changeTitleAction)
+        alert.addAction(shareList)
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true)
@@ -218,7 +225,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             selectedList = list
             present(picker, animated: true, completion: nil)
             
-        } else {
+        } else if result == "title" {
             print("Change title of: " + title)
             
             let alert = UIAlertController(title: "Edit title", message: "Enter new title", preferredStyle: .alert)
@@ -240,6 +247,48 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
                 }
             }))
             self.present(alert, animated: true, completion: nil)
+        } else { //Share list
+            let query = PFQuery(className: "Items").whereKey("list", equalTo: list)
+            query.findObjectsInBackground { (items, error) in
+                if items != nil {
+                    print("Share list code")
+                    var shareText = (list["title"] as! String) + ":"
+                    for item in items! {
+                        let type = item["type"] as! String
+                        if type == "book" {
+                            let book = item["details"] as! [String:Any]
+                            let bookInfo = book["volumeInfo"] as! [String:Any]
+                            let title = bookInfo["title"] as! String
+                            let authors = bookInfo["authors"] as! [String]
+                            let author = authors[0]
+                            //Add book title & author
+                            shareText += "\n" + title + ", " + author
+                        } else if type == "movie" {
+                            let movie = item["details"] as! [String:Any]
+                            let title = movie["title"] as! String
+                            //Add movie title
+                            shareText += "\n" + title
+                        } else if type == "show" {
+                            let show = item["details"] as! [String:Any]
+                            let title = show["name"] as! String
+                            //Add show title
+                            shareText += "\n" + title
+                        }
+                    }
+                    print(shareText)
+                    //Retrieves image url/data
+                    let imageFile = list["photo"] as! PFFileObject
+                    let urlString = imageFile.url!
+                    let url = URL(string: urlString)!
+                    let data = NSData(contentsOf: url)!
+                    let image = UIImage(data: data as Data)
+                    //Show UIActivityViewController
+                    let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
+                    self.present(vc, animated: true)
+                } else {
+                    print("Couldn't find items: \(error)")
+                }
+            }
         }
     }
     
