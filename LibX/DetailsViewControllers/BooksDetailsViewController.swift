@@ -27,11 +27,10 @@ class BooksDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         let bookInfo = book["volumeInfo"] as! [String:Any]
-        print(bookInfo["title"])
         bookAuthorLabel.text = ""
         
-        bookTitleLabel.text = bookInfo["title"] as! String
-        let authors = bookInfo["authors"] as! [String]
+        bookTitleLabel.text = bookInfo["title"] as? String ?? "N/A"
+        let authors = bookInfo["authors"] as? [String] ?? ["N/A"]
         //Shows all authors of book
         for author in authors {
             bookAuthorLabel.text! += author + "+"
@@ -80,6 +79,7 @@ class BooksDetailsViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let addViewController = segue.destination as! AddViewController
+        //Lets view controller know what item to add to list
         addViewController.item = book
     }
     
