@@ -27,6 +27,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor(named: "TableViewColor")
         //Bind refreshControl to action
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
         //Bind control to tableView
@@ -65,8 +66,8 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let book = books[indexPath.row]
         let bookInfo = book["volumeInfo"] as! [String:Any]
         
-        let title = bookInfo["title"] as! String
-        let authors = bookInfo["authors"] as! [String]
+        let title = bookInfo["title"] as? String ?? "N/A"
+        let authors = bookInfo["authors"] as? [String] ?? ["N/A"]
         let author = authors[0]
         
         cell.bookTitleLabel.text = title
