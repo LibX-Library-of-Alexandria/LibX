@@ -194,6 +194,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Passes information to BooksDetailsViewController
         let booksDetailsViewController = segue.destination as! BooksDetailsViewController
         booksDetailsViewController.book = book
+        booksDetailsViewController.showAddButton = true
         
         //De-highlights selected row
         tableView.deselectRow(at: indexPath, animated: true)

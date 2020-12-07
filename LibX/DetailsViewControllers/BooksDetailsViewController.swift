@@ -21,6 +21,7 @@ class BooksDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     
     var book : [String:Any]!
+    var showAddButton : Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class BooksDetailsViewController: UIViewController {
         }
         bookAuthorLabel.text = bookAuthorLabel.text?.dropLast().replacingOccurrences(of: "+", with: ", ")
         //Check if exists
-        bookPubDateLabel.text = (bookInfo["publisher"] as! String) + ", " + (bookInfo["publishedDate"] as! String)
+        bookPubDateLabel.text = (bookInfo["publisher"] as? String ?? "N/A") + ", " + (bookInfo["publishedDate"] as? String ?? "N/A")
         
         //Set book cover
         if let imageLinks = bookInfo["imageLinks"] as? [String:Any] {
@@ -46,7 +47,7 @@ class BooksDetailsViewController: UIViewController {
         }
         
         //Remove special characters before
-        bookSynopsisLabel.text = bookInfo["description"] as! String
+        bookSynopsisLabel.text = bookInfo["description"] as? String ?? "N/A"
 
         bookImage.layer.masksToBounds = false
         bookImage.layer.shadowColor = UIColor.black.cgColor
@@ -61,17 +62,15 @@ class BooksDetailsViewController: UIViewController {
 //        scrollView.contentSize = contentRect.size
         
         //Floating action button
-        let actionButton = JJFloatingActionButton()
+        if showAddButton {
+            let actionButton = JJFloatingActionButton()
 
-        actionButton.addItem(title: "Add Button", image: UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)) { item in
-//            let alert = UIAlertController(title: "Tapped Add Item Button", message: "Example text", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-            
-            self.performSegue(withIdentifier: "addSegue", sender: self)
+            actionButton.addItem(title: "Add Button", image: UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)) { item in
+                self.performSegue(withIdentifier: "addSegue", sender: self)
+            }
+            actionButton.buttonColor = UIColor.systemTeal
+            actionButton.display(inViewController: self)
         }
-        actionButton.buttonColor = UIColor.systemTeal
-        actionButton.display(inViewController: self)
     }
     
 
