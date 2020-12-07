@@ -28,8 +28,8 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         //Space between items in "rows"
         layout.minimumInteritemSpacing = 0
         
-        //Width of phone / 2
-        let width = collectionView.frame.size.width * (1/2)
+        //Width of collectionview / 2
+        let width = (self.view.frame.size.width - 20) * (1/2)
         //Size of each item in collection view
         layout.itemSize = CGSize(width: width, height: width)
         
@@ -39,6 +39,9 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
         //Bind control to tableView
         collectionView.refreshControl = refreshControl
+        
+        //Removes text in back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "blue1")

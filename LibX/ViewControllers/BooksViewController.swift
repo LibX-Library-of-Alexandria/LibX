@@ -36,8 +36,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         //SearchBar setup
         searchBar.delegate = self
         searchBar.barTintColor = UIColor(named: "TableViewColor")
-        searchBar.tintColor = UIColor.white
-        //searchBar.setImage(UIImage(named: "my_search_icon"), for: UISearchBarIcon.search, state: .normal) //Set search icon
+        searchBar.tintColor = UIColor.gray
         //Customize searchBar textfield
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.black
