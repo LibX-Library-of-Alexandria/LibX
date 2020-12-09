@@ -20,6 +20,8 @@ class BooksDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     var book : [String:Any]!
     var showAddButton : Bool!
     
@@ -45,7 +47,6 @@ class BooksDetailsViewController: UIViewController {
             bookImage.af_setImage(withURL: imageUrl!)
         }
         
-        //Remove special characters before
         bookSynopsisLabel.text = bookInfo["description"] as? String ?? "N/A"
 
         bookImage.layer.masksToBounds = false
@@ -69,6 +70,9 @@ class BooksDetailsViewController: UIViewController {
             }
             actionButton.buttonColor = UIColor.systemTeal
             actionButton.display(inViewController: self)
+            bottomConstraint.constant = 80
+        } else {
+            bottomConstraint.constant = 40
         }
     }
     
@@ -81,6 +85,7 @@ class BooksDetailsViewController: UIViewController {
         let addViewController = segue.destination as! AddViewController
         //Lets view controller know what item to add to list
         addViewController.item = book
+        addViewController.type = "book"
     }
     
 

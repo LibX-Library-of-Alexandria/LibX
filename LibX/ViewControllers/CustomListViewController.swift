@@ -169,14 +169,22 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
             print(movie)
             
             //Passes information to MovieDetailsViewController
+            let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+            //movieDetailsViewController.show = show
+            //movieDetailsViewController.showAddButton = false
             
             //De-highlights selected row
             tableView.deselectRow(at: indexPath, animated: true)
         } else if let cell = sender as? ShowCell {
             let indexPath = tableView.indexPath(for: cell)!
             let item = items[(items.count-1)-indexPath.row]
+            let show = item["details"] as! [String:Any]
+            print(show)
             
             //Passes information to ShowDetailsViewController
+            let showDetailsViewController = segue.destination as! ShowDetailsViewController
+            showDetailsViewController.show = show
+            showDetailsViewController.showAddButton = false
             
             //De-highlights selected row
             tableView.deselectRow(at: indexPath, animated: true)

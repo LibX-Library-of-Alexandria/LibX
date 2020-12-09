@@ -11,7 +11,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    //Import file
+    func application(
+        _ app: UIApplication,
+        open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+        ) -> Bool {
+        print("In SceneDelegate")
+        //Verify url's extension is libx
+        guard url.pathExtension == "libx" else { return false }
 
+        //Import data using static method
+        ListsViewController.importData(from: url)
+
+        //Verify rootViewController is instance of UINavigationController
+        guard
+            let navigationController = window?.rootViewController as? UINavigationController,
+            let listsViewController = navigationController.viewControllers
+          .first as? ListsViewController
+        else { return true }
+
+        //Sucessfully processed new file
+        //listsViewController.tableView.reloadData()
+        return true
+    }
+    //Import file
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.

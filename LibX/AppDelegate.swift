@@ -11,7 +11,22 @@ import Parse
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //Import file
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        var backgroundTaskId = UIApplication.shared.beginBackgroundTask (withName: "Import libx file")
+        
+        // handle the file here
+        print("In AppDelegate")
+        //Verify url's extension is libx
+        guard url.pathExtension == "libx" else { return false }
 
+        //Import data using static method
+        ListsViewController.importData(from: url)
+        UIApplication.shared.endBackgroundTask(backgroundTaskId)
+        backgroundTaskId = UIBackgroundTaskIdentifier.invalid
+        return true
+    }
+    //Import file
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
