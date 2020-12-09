@@ -49,10 +49,20 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor(named: "TableViewColor")?.cgColor
         
-        retrieveAPI()
-        
         //Removes text in back button
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //Change navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
+        
+        retrieveAPI() //Gets API info
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //Change navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,7 +167,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print(self.books.count)
             } else { //Invalid user input
                 let alert = UIAlertController(title: "Opps!", message: "Please check your spelling", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
            }

@@ -52,18 +52,23 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         refreshControl.endRefreshing()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "blue1")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         retrieveLists()
     }
     
     func retrieveLists() {
         print("Retrieving lists")
         
-        let query = PFQuery(className: "Lists")
+        let query = PFQuery(className: "Lists").whereKey("user", equalTo: PFUser.current()!)
         query.includeKeys(["title", "user", "photo"])
         //query.limit?
         
@@ -92,9 +97,9 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             cell.containerView.layer.masksToBounds = true
             
             cell.listTitleLabel.text = list["title"] as! String
-            cell.containerView.alpha = 0.5
+            cell.containerView.alpha = 0.65
             cell.listTitleLabel.alpha = 1
-            cell.editListButton.alpha = 0.5
+            cell.editListButton.alpha = 0.65
             cell.editListButton.tag = indexPath.row //Associates button with specific cell
             
             if let imageFile = list["photo"] as? PFFileObject { //Checks if list has photo
@@ -123,6 +128,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             let alert = UIAlertController(title: "Creating Custom List", message: "Enter list title", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { textField in
                 textField.placeholder = "List Title"
+                textField.autocapitalizationType = .words
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
@@ -278,15 +284,18 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
                             shareText += "\n" + title
                         }
                     }
-                    print(shareText)
                     //Retrieves image url/data
                     let imageFile = list["photo"] as! PFFileObject
                     let urlString = imageFile.url!
                     let url = URL(string: urlString)!
                     let data = NSData(contentsOf: url)!
                     let image = UIImage(data: data as Data)
+                    //Sharing outside app
+                    guard
+                        let urlData = self.exportToUrl(list: list)
+                    else { return }
                     //Show UIActivityViewController
-                    let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
+                    let vc = UIActivityViewController(activityItems: [shareText, urlData], applicationActivities: [])
                     self.present(vc, animated: true)
                 } else {
                     print("Couldn't find items: \(error)")
@@ -320,7 +329,69 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
         dismiss(animated: true, completion: nil)
     }
     
-
+    //Sharing feature
+    //Reads in imported data from libx files
+    static func importData(from url: URL) {
+        print("Importing Data")
+        //Verify file can be read
+        guard
+            let data = try? Data(contentsOf: url),
+            let dictionary = try? JSONDecoder().decode([String:String].self, from: data)
+        else { return }
+        
+        //Add data to app
+        let id = dictionary["objectId"]!
+        let query = PFQuery(className: "Lists").whereKey("objectId", equalTo: id)
+        let list = query.getFirstObjectInBackground() //Maybe findObjectsInBackground()?
+        let query1 = PFQuery(className: "Items").whereKey("list", equalTo: list)
+        query1.findObjectsInBackground { (objects, error) in
+            if objects != nil {
+                let items = objects!
+                var itemsCopy = [PFObject]()
+                for item in items {
+                    itemsCopy.append(item.copy() as! PFObject)
+                }
+                let listCopy = list.copy() as! PFObject
+                listCopy["user"] = PFUser.current()! //Changes user
+                listCopy.saveInBackground()
+                for itemCopy in itemsCopy {
+                    itemCopy["list"] = listCopy //Get list first?
+                    itemCopy.saveInBackground()
+                }
+                print("Finished importing")
+            } else {print("Error in finding objects")}
+        }
+        
+        //Delete file after opening
+        try? FileManager.default.removeItem(at: url)
+    }
+    //Export data
+    func exportToUrl(list: PFObject) -> URL? {
+        //Convert data to JSON
+        print(list.objectId)
+        let objectId = list.objectId as! String
+        let dictionary = ["objectId" : objectId] as [String:String]
+        guard let encoded = try? JSONEncoder().encode(dictionary) else { return nil }
+        
+        //Verify can access Documents dierctory w/o error
+        let documents = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        ).first
+        guard let path = documents?.appendingPathComponent("/\(list["title"]).libx") else {
+            return nil
+        }
+        
+        //Save data to Documents director & return URL of created file
+        do {
+            try encoded.write(to: path, options: .atomicWrite)
+            return path
+        } catch {
+            print(error.localizedDescription)
+            return nil
+      }
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! ListCell

@@ -15,6 +15,7 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
     var lists = [PFObject]()
     var selectedList : PFObject!
     var item : [String:Any]!
+    var type : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +41,8 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
     func retrieveLists() {
         print("Retrieving lists")
         
-        let query = PFQuery(className: "Lists")
+        let query = PFQuery(className: "Lists").whereKey("user", equalTo: PFUser.current()!)
         query.includeKeys(["title", "user", "photo"])
-        //query.limit?
         
         query.findObjectsInBackground { (lists, error) in
             if lists != nil{
@@ -92,10 +92,10 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
             id = item["id"] as! String
         }
         
-        newItem["itemId"] = id ?? "nil" //newItem["objectId"] = item["id"] as? String
-        newItem["details"] = item //Convert to JSON?
+        newItem["itemId"] = id ?? "nil"
+        newItem["details"] = item
         newItem["list"] = list //Pointer to list object
-        newItem["type"] = "book"
+        newItem["type"] = type
         
         //Check if item already points to list
         let query = PFQuery(className: "Items").whereKey("list", equalTo: list).whereKey("itemId", equalTo: id!)
@@ -105,10 +105,7 @@ class AddViewController: UIViewController, UICollectionViewDelegate, UICollectio
                     //POST item & creates association w/ list
                     newItem.saveInBackground { (success, error) in
                         if success{
-                            //self.dismiss(animated: true, completion: nil)
-                            let alert = UIAlertController(title: "Added to List!", message: nil, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true)
+                            self.dismiss(animated: true, completion: nil)
                             print("Saved item")
                         } else {
                             print("Could not save item: \(error)")
