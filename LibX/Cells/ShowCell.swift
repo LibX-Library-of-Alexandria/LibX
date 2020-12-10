@@ -15,7 +15,8 @@ class ShowCell: UITableViewCell {
     @IBOutlet weak var synopsisLabel: UILabel!
     
     @IBOutlet weak var cardView: UIView!
-    
+    var checked : Bool?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -139,12 +139,80 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("Error in deleting item: \(error)")
                 }
             }
-        } else if editingStyle == .insert {
-            //Insert row?
-            print("Insert editing style")
         }
     }
-
+    // this method handles checking cells
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var image = UIImage(named: "checkmark")
+        let string = NSLocalizedString("Check", comment: "Check")
+        if let cell = tableView.cellForRow(at: indexPath) as? BookCell {
+            if (cell.checked) != nil {
+                if cell.checked! {
+                    cell.checked = false
+                    image = UIImage(named: "arrowshape.turn.up.left")
+                } else {
+                    cell.checked = true
+                }
+            } else { cell.checked = true }
+            let action = UIContextualAction(style: .normal, title: string,
+                handler: { (action, view, completionHandler) in
+                // Update data source when user taps action
+                    if cell.checked! {
+                        cell.cardView.layer.opacity = 1
+                    } else { cell.cardView.layer.opacity = 0.2 }
+                completionHandler(true)
+            })
+            action.backgroundColor = UIColor(named: "pale_spring_bud")
+            action.image = image
+            let configuration = UISwipeActionsConfiguration(actions: [action])
+            return configuration
+            
+        } else if let cell = tableView.cellForRow(at: indexPath) as? MovieCell {
+            if (cell.checked) != nil {
+                if cell.checked! {
+                    cell.checked = false
+                    image = UIImage(named: "arrowshape.turn.up.left")
+                } else {
+                    cell.checked = true
+                }
+            } else { cell.checked = true }
+            let action = UIContextualAction(style: .normal, title: string,
+                handler: { (action, view, completionHandler) in
+                // Update data source when user taps action
+                    if cell.checked! {
+                        cell.cardView.layer.opacity = 1
+                    } else { cell.cardView.layer.opacity = 0.2 }
+                completionHandler(true)
+            })
+            action.backgroundColor = UIColor(named: "pale_spring_bud")
+            action.image = image
+            let configuration = UISwipeActionsConfiguration(actions: [action])
+            return configuration
+            
+        } else {
+            let cell = tableView.cellForRow(at: indexPath) as! ShowCell
+            if (cell.checked) != nil {
+                if cell.checked! {
+                    cell.checked = false
+                    image = UIImage(named: "arrowshape.turn.up.left")
+                } else {
+                    cell.checked = true
+                }
+            } else { cell.checked = true }
+            let action = UIContextualAction(style: .normal, title: string,
+                handler: { (action, view, completionHandler) in
+                // Update data source when user taps action
+                    if cell.checked! {
+                        cell.cardView.layer.opacity = 1
+                    } else { cell.cardView.layer.opacity = 0.2 }
+                completionHandler(true)
+            })
+            action.backgroundColor = UIColor(named: "pale_spring_bud")
+            action.image = image
+            let configuration = UISwipeActionsConfiguration(actions: [action])
+            return configuration
+        }
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
