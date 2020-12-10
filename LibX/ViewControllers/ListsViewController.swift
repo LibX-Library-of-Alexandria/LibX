@@ -271,19 +271,20 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
                             let authors = bookInfo["authors"] as! [String]
                             let author = authors[0]
                             //Add book title & author
-                            shareText += "\n" + title + ", " + author
+                            shareText += ",\n" + title + ", " + author
                         } else if type == "movie" {
                             let movie = item["details"] as! [String:Any]
                             let title = movie["title"] as! String
                             //Add movie title
-                            shareText += "\n" + title
+                            shareText += ",\n" + title
                         } else if type == "show" {
                             let show = item["details"] as! [String:Any]
                             let title = show["name"] as! String
                             //Add show title
-                            shareText += "\n" + title
+                            shareText += ",\n" + title
                         }
                     }
+                    shareText = shareText.replacingOccurrences(of: ":,", with: ":")
                     //Retrieves image url/data
                     let imageFile = list["photo"] as! PFFileObject
                     let urlString = imageFile.url!
