@@ -208,7 +208,7 @@ An app that allows users to browse through different databases, create curated l
 - [x] User can add to / remove items from lists
 - [x] User can share lists with people
 
-<img src="http://g.recordit.co/gIjzRXpWMK.gif"><img src="http://g.recordit.co/yhC3iG7Dek.gif">
+<img src="http://g.recordit.co/gIjzRXpWMK.gif"><img src="http://g.recordit.co/yhC3iG7Dek.gif"><img src="http://g.recordit.co/Yh5cL1vST1.gif">
 
 #### Additional Notes
 * Cannot share lists within app as of yet
