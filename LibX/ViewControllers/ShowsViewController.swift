@@ -65,8 +65,15 @@ class ShowsViewController: UIViewController, UITableViewDelegate, UITableViewDat
               print(error.localizedDescription)
            } else if let data = data {
               let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-
-            self.shows = dataDictionary["results"] as! [[String:Any]]
+            
+            let shows = dataDictionary["results"] as! [[String:Any]]
+            if shows.count > 0{
+                self.shows = shows
+            } else { //No results
+                let alert = UIAlertController(title: "No results", message: "Could not find results", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
             self.tableView.reloadData()
             
             print(dataDictionary)
@@ -80,20 +87,21 @@ class ShowsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         refreshControl.endRefreshing()
     }
     
+    //Search functions
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchResultsAPI()
     }
     func searchResultsAPI() {
         print("Sending search")
-        //https://api.themoviedb.org/3/search/tv?api_key=81eb8300739b19966e28c34a105320d0&language=en-US&page=1&query=the%20mandalorian&include_adult=false
+
         //Parse user's input text
         let input = searchBar.text
         var filteredInput = removeSpecialCharsFromString(text: input ?? "").lowercased() //Removes special chars & brings to lowercase
         filteredInput = filteredInput.trimmingCharacters(in: .whitespacesAndNewlines) //Removes beginning/trailing whitespace
-        filteredInput = filteredInput.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil) //Replaces spaces w/ "+"
+        filteredInput = filteredInput.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil) //Replaces spaces w/ "%20"
         
         let apiKey = "81eb8300739b19966e28c34a105320d0"
-        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=" + apiKey + "&language=en-US&page=1&query=" + filteredInput + "&include_adult=false"
+        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=" + apiKey + "&page=1&query=" + filteredInput + "&include_adult=false"
         print(urlString)
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -114,9 +122,9 @@ class ShowsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //Updates app so that tableView isn't 0 (calls tableView funcs again)
                 self.tableView.reloadData()
                 
-                print(dataDictionary)
-                print(filteredInput)
-                print(self.shows.count)
+                //print(dataDictionary)
+                //print(filteredInput)
+                //print(self.shows.count)
             } else { //Invalid user input
                 let alert = UIAlertController(title: "Opps!", message: "Please check your spelling", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

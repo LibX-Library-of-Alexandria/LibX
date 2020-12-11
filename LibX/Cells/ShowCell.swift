@@ -15,6 +15,9 @@ class ShowCell: UITableViewCell {
     @IBOutlet weak var synopsisLabel: UILabel!
     
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var shadowView: UIView!
     var checked : Bool?
 
     override func awakeFromNib() {

@@ -240,6 +240,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             let alert = UIAlertController(title: "Edit title", message: "Enter new title", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { textField in
                 textField.placeholder = "List Title"
+                textField.autocapitalizationType = .words
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
