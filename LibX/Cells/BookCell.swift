@@ -14,6 +14,9 @@ class BookCell: UITableViewCell {
     @IBOutlet weak var bookAuthorLabel: UILabel!
     
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var shadowView: UIView!
     var checked : Bool?
     
     override func awakeFromNib() {

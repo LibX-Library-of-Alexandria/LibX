@@ -117,13 +117,18 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             //Sets books to books in API call
             let books = dataDictionary["items"] as! [[String:Any]]
-            self.books = books
+            if books.count > 0{
+                self.books = books
+            } else { //No results
+                let alert = UIAlertController(title: "No results", message: "Could not find results", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
             
             //Updates app so that tableView isn't 0 (calls tableView funcs again)
             self.tableView.reloadData()
             
             print(dataDictionary)
-            print(self.books.count)
            }
         }
         task.resume()

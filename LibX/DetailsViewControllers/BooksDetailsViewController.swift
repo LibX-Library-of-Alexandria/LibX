@@ -28,6 +28,24 @@ class BooksDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDesign()
+        
+        //Floating action button
+        if showAddButton {
+            let actionButton = JJFloatingActionButton()
+
+            actionButton.addItem(title: "Add Button", image: UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)) { item in
+                self.performSegue(withIdentifier: "addSegue", sender: self)
+            }
+            actionButton.buttonColor = UIColor.systemTeal
+            actionButton.display(inViewController: self)
+            bottomConstraint.constant = 80
+        } else {
+            bottomConstraint.constant = 40
+        }
+    }
+    
+    func setDesign() {
         let bookInfo = book["volumeInfo"] as! [String:Any]
         bookAuthorLabel.text = ""
         
@@ -55,30 +73,8 @@ class BooksDetailsViewController: UIViewController {
         bookImage.layer.shadowOpacity = 0.4
         bookImage.layer.shadowRadius = 8
         bookImage.layer.shadowPath = UIBezierPath(rect: bookImage.bounds).cgPath
-        
-//        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
-//            rect = rect.union(view.frame)
-//        }
-//        scrollView.contentSize = contentRect.size
-        
-        //Floating action button
-        if showAddButton {
-            let actionButton = JJFloatingActionButton()
-
-            actionButton.addItem(title: "Add Button", image: UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)) { item in
-                self.performSegue(withIdentifier: "addSegue", sender: self)
-            }
-            actionButton.buttonColor = UIColor.systemTeal
-            actionButton.display(inViewController: self)
-            bottomConstraint.constant = 80
-        } else {
-            bottomConstraint.constant = 40
-        }
     }
     
-
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +83,4 @@ class BooksDetailsViewController: UIViewController {
         addViewController.item = book
         addViewController.type = "book"
     }
-    
-
 }

@@ -12,6 +12,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var appImage: UIImageView!
     
     let defaults = UserDefaults.standard
     
@@ -30,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         print("Could not sign in: \(error)")
                         let alert = UIAlertController(title: "Invalid username and/or password", message: "Please verify your information", preferredStyle: UIAlertController.Style(rawValue: 1)!)
                         
-                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                             alert.dismiss(animated: true, completion: nil)
                         }))
                         
@@ -63,6 +64,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        appImage.layer.cornerRadius = 20
+        appImage.layer.masksToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
