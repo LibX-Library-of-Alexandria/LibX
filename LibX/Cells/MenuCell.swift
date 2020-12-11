@@ -16,6 +16,7 @@ class MenuCell: UITableViewCell {
         super.awakeFromNib()
         
         categoryImage.layer.cornerRadius = 12
+        categoryImage.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

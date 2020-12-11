@@ -14,7 +14,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var searchBar: UISearchBar!
     
     var books = [[String:Any]]()
-    var page = 0
+    var numBooks = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor(named: "TableViewColor")
         //Bind refreshControl to action
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
         //Bind control to tableView
@@ -34,10 +35,34 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //SearchBar setup
         searchBar.delegate = self
-        //searchBar.searchTextField.layer.cornerRadius = 20
-        //searchBar.searchTextField.layer.masksToBounds = true
+        searchBar.barTintColor = UIColor(named: "TableViewColor")
+        searchBar.tintColor = UIColor.gray
+        //Customize searchBar textfield
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            textfield.backgroundColor = UIColor.white
+            textfield.layer.cornerRadius = 18
+            textfield.layer.masksToBounds = true
+            textfield.placeholder = "Search for books"
+        }
+        //Remove searchBar border
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor(named: "TableViewColor")?.cgColor
         
-        retrieveAPI()
+        //Removes text in back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //Change navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
+        
+        retrieveAPI() //Gets API info
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //Change navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,8 +75,8 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let book = books[indexPath.row]
         let bookInfo = book["volumeInfo"] as! [String:Any]
         
-        let title = bookInfo["title"] as! String
-        let authors = bookInfo["authors"] as! [String]
+        let title = bookInfo["title"] as? String ?? "N/A"
+        let authors = bookInfo["authors"] as? [String] ?? ["N/A"]
         let author = authors[0]
         
         cell.bookTitleLabel.text = title
@@ -73,7 +98,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func retrieveAPI(){
         print("Sending API")
-        page = 1
+        numBooks = 10
         
         //Send API request
         let apiKey = "AIzaSyA3ImZJPYLJB8lng-g7Rp4ibvPDUJN8dcU"
@@ -92,13 +117,18 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             //Sets books to books in API call
             let books = dataDictionary["items"] as! [[String:Any]]
-            self.books = books
+            if books.count > 0{
+                self.books = books
+            } else { //No results
+                let alert = UIAlertController(title: "No results", message: "Could not find results", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
             
             //Updates app so that tableView isn't 0 (calls tableView funcs again)
             self.tableView.reloadData()
             
             print(dataDictionary)
-            print(self.books.count)
            }
         }
         task.resume()
@@ -142,7 +172,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print(self.books.count)
             } else { //Invalid user input
                 let alert = UIAlertController(title: "Opps!", message: "Please check your spelling", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
            }
@@ -168,15 +198,21 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchBar.resignFirstResponder()
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        print("Segueing to book details")
+        
+        //Gets selected cell
+        let cell = sender as! BookCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let book = books[indexPath.row]
+        
+        //Passes information to BooksDetailsViewController
+        let booksDetailsViewController = segue.destination as! BooksDetailsViewController
+        booksDetailsViewController.book = book
+        booksDetailsViewController.showAddButton = true
+        
+        //De-highlights selected row
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
 
 }
