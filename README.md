@@ -204,3 +204,11 @@ An app that allows users to browse through different databases, create curated l
 * Our updated design for the app reverted to a previous version, will address in last Sprint
 * Code for the Movie and Screen Details Screen needs to be debugged (error with optionals)
 
+### Sprint 3
+- [x] User can add to / remove items from lists
+- [x] User can share lists with people
+
+<img src="http://g.recordit.co/gIjzRXpWMK.gif"><img src="http://g.recordit.co/yhC3iG7Dek.gif">
+
+#### Additional Notes
+* Cannot share lists within app as of yet
