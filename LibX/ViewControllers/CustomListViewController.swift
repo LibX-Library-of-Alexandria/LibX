@@ -99,6 +99,9 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.scrollView.showsHorizontalScrollIndicator = false
                 cell.scrollView.delegate = self
                 cell.scrollView.tag = indexPath.row //Associates scrollView with specific cell
+                cell.cardView.tag = indexPath.row
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+                cell.cardView.addGestureRecognizer(tap)
                 
                 return cell
             } else if type == "movie" {
@@ -131,6 +134,9 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.scrollView.showsHorizontalScrollIndicator = false
                 cell.scrollView.delegate = self
                 cell.scrollView.tag = indexPath.row //Associates scrollView with specific cell
+                cell.cardView.tag = indexPath.row
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+                cell.cardView.addGestureRecognizer(tap)
                 
                 return cell
             } else {
@@ -163,6 +169,9 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.scrollView.showsHorizontalScrollIndicator = false
                 cell.scrollView.delegate = self
                 cell.scrollView.tag = indexPath.row //Associates scrollView with specific cell
+                cell.cardView.tag = indexPath.row
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+                cell.cardView.addGestureRecognizer(tap)
                 
                 return cell
             }
@@ -171,6 +180,18 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
 //            return cell
 //        }
     }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        let rowNum = (sender as! UITapGestureRecognizer).view?.tag
+        if let cell = tableView.visibleCells[rowNum!] as? BookCell {
+            performSegue(withIdentifier: "bookDetails", sender: cell)
+        } else if let cell = tableView.visibleCells[rowNum!] as? MovieCell {
+            performSegue(withIdentifier: "movieDetails", sender: cell)
+        } else if let cell = tableView.visibleCells[rowNum!] as? ShowCell {
+            performSegue(withIdentifier: "showDetails", sender: cell)
+        }
+    }
+    
     //Delete cell/item
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x
@@ -263,24 +284,29 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
             return configuration
         }
     }
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Gets selected cell
+        print("segue")
         if let cell = sender as? BookCell {
+//            let rowNum = bookTGR.view?.tag
+//            let cell = tableView.visibleCells[rowNum!]
             let indexPath = tableView.indexPath(for: cell)!
             let item = items[(items.count-1)-indexPath.row]
             let book = item["details"] as! [String:Any]
             print(book)
-            
+
             //Passes information to BooksDetailsViewController
             let booksDetailsViewController = segue.destination as! BooksDetailsViewController
             booksDetailsViewController.book = book
             booksDetailsViewController.showAddButton = false
+            print("book")
             
             //De-highlights selected row
-            tableView.deselectRow(at: indexPath, animated: true)
+            //tableView.deselectRow(at: indexPath, animated: true)
         } else if let cell = sender as? MovieCell {
+            //let cell = sender as! MovieCell
             let indexPath = tableView.indexPath(for: cell)!
             let item = items[(items.count-1)-indexPath.row]
             let movie = item["details"] as! [String:Any]
@@ -294,6 +320,7 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
             //De-highlights selected row
             tableView.deselectRow(at: indexPath, animated: true)
         } else if let cell = sender as? ShowCell {
+            //let cell = sender as! ShowCell
             let indexPath = tableView.indexPath(for: cell)!
             let item = items[(items.count-1)-indexPath.row]
             let show = item["details"] as! [String:Any]

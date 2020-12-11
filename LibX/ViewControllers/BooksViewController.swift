@@ -14,7 +14,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var searchBar: UISearchBar!
     
     var books = [[String:Any]]()
-    var page = 0
+    var numBooks = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +98,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func retrieveAPI(){
         print("Sending API")
-        page = 1
+        numBooks = 10
         
         //Send API request
         let apiKey = "AIzaSyA3ImZJPYLJB8lng-g7Rp4ibvPDUJN8dcU"

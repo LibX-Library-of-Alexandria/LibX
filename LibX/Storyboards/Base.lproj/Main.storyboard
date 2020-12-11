@@ -57,7 +57,7 @@
                                     <action selector="onSignUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfJ-EB-0z6"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="library" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-u9-m9v">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookshelf" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-u9-m9v">
                                 <rect key="frame" x="80" y="84" width="254" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="Hz7-in-51k"/>
@@ -938,7 +938,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uZt-O1-4vn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uZt-O1-4vn">
                                 <rect key="frame" x="10" y="138" width="394" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aNc-Bg-tqo">
@@ -1105,10 +1105,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hQ-D9-1yC">
-                                                    <rect key="frame" x="20" y="15" width="374" height="145"/>
+                                                    <rect key="frame" x="20" y="10" width="374" height="150"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="145" id="Nn2-R5-y1B"/>
+                                                        <constraint firstAttribute="height" constant="150" id="Nn2-R5-y1B"/>
                                                     </constraints>
                                                 </view>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C71-AM-IaK">
@@ -1140,6 +1140,7 @@
                                                                         </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <gestureRecognizers/>
                                                                     <constraints>
                                                                         <constraint firstItem="Y89-s6-Oaz" firstAttribute="top" secondItem="hGP-TE-RwY" secondAttribute="bottom" constant="10" id="4ZG-Sb-0ZB"/>
                                                                         <constraint firstItem="hay-Rf-gmM" firstAttribute="leading" secondItem="V08-Ka-YrX" secondAttribute="leading" id="9vC-aC-EgU"/>
@@ -1197,9 +1198,9 @@
                                             <constraints>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" id="7hs-RN-sLQ"/>
                                                 <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerX" secondItem="kCt-us-R45" secondAttribute="centerX" id="AFC-W5-qls"/>
-                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" constant="2.5" id="AeB-8X-rOF"/>
+                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" id="AeB-8X-rOF"/>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="leading" secondItem="kCt-us-R45" secondAttribute="leading" constant="20" id="ShR-AL-UMO"/>
-                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="width" secondItem="C71-AM-IaK" secondAttribute="width" multiplier="0.641711" constant="134" id="cxV-Ej-vE8"/>
+                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="width" secondItem="C71-AM-IaK" secondAttribute="width" id="Zq0-m2-pm0"/>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="centerX" secondItem="kCt-us-R45" secondAttribute="centerX" id="opC-Q8-qZn"/>
                                                 <constraint firstAttribute="trailing" secondItem="C71-AM-IaK" secondAttribute="trailing" constant="20" id="pjg-4B-Kyc"/>
                                             </constraints>
@@ -1212,7 +1213,7 @@
                                             <outlet property="scrollView" destination="C71-AM-IaK" id="Xj1-XP-p99"/>
                                             <outlet property="shadowView" destination="8hQ-D9-1yC" id="OOg-fX-hzP"/>
                                             <outlet property="stackView" destination="ria-my-i91" id="OCP-uU-D71"/>
-                                            <segue destination="y7U-71-8T0" kind="show" id="oqs-7y-XKi"/>
+                                            <segue destination="y7U-71-8T0" kind="show" identifier="bookDetails" id="oqs-7y-XKi"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" id="D3J-k3-tdK" customClass="MovieCell" customModule="LibX" customModuleProvider="target">
@@ -1258,6 +1259,7 @@
                                                                         </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <gestureRecognizers/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="150" id="0Zq-Wx-y8b"/>
                                                                         <constraint firstItem="Tgg-3Y-RZp" firstAttribute="leading" secondItem="pQG-Yo-dyp" secondAttribute="leading" id="4xU-L6-6EN"/>
@@ -1330,7 +1332,7 @@
                                             <outlet property="stackView" destination="Jwy-E6-nvz" id="0Gw-hF-4Vk"/>
                                             <outlet property="synopsisLabel" destination="MCL-jz-q93" id="PxY-Wr-kZg"/>
                                             <outlet property="titleLabel" destination="PGg-eL-Djb" id="2R8-T6-Tnd"/>
-                                            <segue destination="zSX-Vy-9o6" kind="show" id="Kou-w4-swe"/>
+                                            <segue destination="zSX-Vy-9o6" kind="show" identifier="movieDetails" id="Kou-w4-swe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShowCell" id="fYf-Q5-2aW" customClass="ShowCell" customModule="LibX" customModuleProvider="target">
@@ -1376,6 +1378,7 @@
                                                                         </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <gestureRecognizers/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6en-5Y-cUQ" secondAttribute="trailing" constant="15" id="HWc-Dh-OXX"/>
                                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ot8-Xx-9dd" secondAttribute="bottom" constant="15" id="HvH-og-OpG"/>
@@ -1445,7 +1448,7 @@
                                             <outlet property="stackView" destination="m5M-Yn-t1P" id="Ndu-Az-KWR"/>
                                             <outlet property="synopsisLabel" destination="ot8-Xx-9dd" id="rtt-F4-acM"/>
                                             <outlet property="titleLabel" destination="6en-5Y-cUQ" id="k5P-Je-Ni8"/>
-                                            <segue destination="Nuk-a0-h8x" kind="show" id="GLy-yz-KIa"/>
+                                            <segue destination="Nuk-a0-h8x" kind="show" identifier="showDetails" id="GLy-yz-KIa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="defaultCell" id="ZR6-C1-us7">
@@ -1588,9 +1591,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.turn.up.left" catalog="system" width="128" height="99"/>
+        <image name="bookshelf" width="1032" height="1032"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="gradient" width="3593" height="1614"/>
-        <image name="library" width="1024" height="1024"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus.viewfinder" catalog="system" width="128" height="115"/>
