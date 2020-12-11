@@ -1105,10 +1105,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hQ-D9-1yC">
-                                                    <rect key="frame" x="20" y="15" width="374" height="145"/>
+                                                    <rect key="frame" x="20" y="10" width="374" height="150"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="145" id="Nn2-R5-y1B"/>
+                                                        <constraint firstAttribute="height" constant="150" id="Nn2-R5-y1B"/>
                                                     </constraints>
                                                 </view>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C71-AM-IaK">
@@ -1198,9 +1198,9 @@
                                             <constraints>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" id="7hs-RN-sLQ"/>
                                                 <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerX" secondItem="kCt-us-R45" secondAttribute="centerX" id="AFC-W5-qls"/>
-                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" constant="2.5" id="AeB-8X-rOF"/>
+                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="centerY" secondItem="kCt-us-R45" secondAttribute="centerY" id="AeB-8X-rOF"/>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="leading" secondItem="kCt-us-R45" secondAttribute="leading" constant="20" id="ShR-AL-UMO"/>
-                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="width" secondItem="C71-AM-IaK" secondAttribute="width" multiplier="0.641711" constant="134" id="cxV-Ej-vE8"/>
+                                                <constraint firstItem="8hQ-D9-1yC" firstAttribute="width" secondItem="C71-AM-IaK" secondAttribute="width" id="Zq0-m2-pm0"/>
                                                 <constraint firstItem="C71-AM-IaK" firstAttribute="centerX" secondItem="kCt-us-R45" secondAttribute="centerX" id="opC-Q8-qZn"/>
                                                 <constraint firstAttribute="trailing" secondItem="C71-AM-IaK" secondAttribute="trailing" constant="20" id="pjg-4B-Kyc"/>
                                             </constraints>
