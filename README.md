@@ -28,26 +28,26 @@ An app that allows users to browse through different databases, create curated l
 
 **Required Must-have Stories**
 
-* User can log into their account
-* User can create curated lists of items
-* User can search through a catalogue of movies, books, TV Shows, and Restaurants
-* User can search for movie, book, TV show, or restaurant within specific database
-* User can see item details
-* User can add to / remove items from lists
-* User can share lists with people
+- [x]User can log into their account
+- [x]User can create curated lists of items
+- [ ]User can search through a catalogue of movies, books, TV Shows, and Restaurants
+- [ ]User can search for movie, book, TV show, or restaurant within specific database
+- [x]User can see item details
+- [x]User can add to / remove items from lists
+- [ ]User can share lists with people
 
 
 **Optional Nice-to-have Stories**
 
-* User can search through database of songs
-* User can follow/friend other users and see other lists
-* User can associate a list with a single item
-* User is able to sort items in list by date, alphabetical order, etc.
-* User can “check off” items in list
-* Additional catalogues
-* User can see skeleton of app when loading
-* User can like lists
-* User receives updates on other users' lists
+- [ ]User can search through database of restaurants
+- [ ]User can follow/friend other users and see other lists
+- [ ]User can associate a list with a single item
+- [ ]User is able to sort items in list by date, alphabetical order, etc.
+- [ ]User can “check off” items in list
+- [ ]Additional catalogues
+- [ ]User can see skeleton of app when loading
+- [ ]User can like lists
+- [ ]User receives updates on other users' lists
 
 
 ### 2. Screen Archetypes
