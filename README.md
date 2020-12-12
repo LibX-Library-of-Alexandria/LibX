@@ -30,7 +30,7 @@ An app that allows users to browse through different databases, create curated l
 
 - [x]User can log into their account
 - [x]User can create curated lists of items
-- [ ]User can search through a catalogue of movies, books, TV Shows, and Restaurants
+- [ ]User can browse through a catalogue of movies, books, TV Shows, and Restaurants
 - [ ]User can search for movie, book, TV show, or restaurant within specific database
 - [x]User can see item details
 - [x]User can add to / remove items from lists
