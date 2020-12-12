@@ -113,7 +113,7 @@ An app that allows users to browse through different databases, create curated l
 | -------- | -------- | ------------|
 | objectId | String   | unique id for the user object *
 | user     | Pointer to User | points to user who created list
-| title     | String   | title of user's created list
+| title    | String   | title of user's created list
 | photo    | File     | image displayed for created list
 |createdAt | DateTime | date when post is created *
 | updatedAt| DateTime |	date when post is last updated *
@@ -123,7 +123,7 @@ An app that allows users to browse through different databases, create curated l
 | Property | Type     | Description |
 | -------- | -------- | ------------|
 | objectId | String   | unique id for the user object *
-| cellId   | String   | Item's id from api
+| itemId   | String   | item's id from api
 | details  | JSON Object | item's specific details information
 | list     | Pointer to List | points to list item belongs to
 |createdAt | DateTime | date when post is created *
