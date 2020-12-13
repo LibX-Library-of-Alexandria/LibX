@@ -54,6 +54,7 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "black_white") //Changes button color
         
         retrieveAPI() //Gets API info
     }
@@ -98,11 +99,11 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func retrieveAPI(){
         print("Sending API")
-        numBooks = 10
+        numBooks = 0
         
         //Send API request
         let apiKey = "AIzaSyA3ImZJPYLJB8lng-g7Rp4ibvPDUJN8dcU"
-        let urlString = "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&printType=books&langRestrict=en&maxResults=40&orderBy=newest&key=" + apiKey
+        let urlString = "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&printType=books&langRestrict=en&orderBy=newest&key=" + apiKey
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
@@ -196,6 +197,54 @@ class BooksViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == books.count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(600)) {
+                //Gets data
+                self.loadMoreData()
+            }
+        }
+    }
+    func loadMoreData() {
+        numBooks += 10
+        
+        //Send API request
+        let apiKey = "AIzaSyA3ImZJPYLJB8lng-g7Rp4ibvPDUJN8dcU"
+        let urlString = "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&printType=books&langRestrict=en&startIndex=" + String(numBooks) + "&orderBy=newest&key=" + apiKey
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+           // This will run when the network request returns
+           if let error = error {
+              print(error.localizedDescription)
+           } else if let data = data {
+              let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            
+            //Sets books to books in API call
+            let books = dataDictionary["items"] as! [[String:Any]]
+            if books.count > 0{
+                //Adds book to books
+                for book in books{
+                    self.books.append(book)
+                }
+            } else { //No results
+                let alert = UIAlertController(title: "No results", message: "Could not find results", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            
+            //Updates app so that tableView isn't 0 (calls tableView funcs again)
+            self.tableView.reloadData()
+            
+            print(dataDictionary)
+           }
+        }
+        task.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
