@@ -14,6 +14,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchBar: UISearchBar!
     
     var movies = [[String:Any]]()
+    var page : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +53,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "TableViewColor")
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "black_white") //Changes button color
     }
     
     func retrieveAPI() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        page = 1
+        
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=" + String(page))!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -176,6 +180,49 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
         
+    }
+    
+    //Loads more data when screen reaches last row
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == movies.count{
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(600)) {
+                //Gets data
+                self.loadMoreData()
+            }
+        }
+    }
+
+    func loadMoreData(){
+        page += 1
+        let urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=" + String(page)
+        
+        // Create the URLRequest 'request'
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+           // This will run when the network request returns
+           if let error = error {
+              print(error.localizedDescription)
+           } else if let data = data {
+              let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+
+            //Use the new data to update the data source
+            let movies = dataDictionary["results"] as! [[String:Any]]
+            //Adds movies to movies
+            for movie in movies{
+                self.movies.append(movie)
+            }
+            
+            //Updates tableView
+            self.tableView.reloadData()
+
+            print(dataDictionary)
+           }
+        }
+        task.resume()
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -32,8 +32,12 @@ class CustomListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.refreshControl = refreshControl
         
         listTitleLabel.text = list["title"] as? String
+        
+        //Removes text in back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "powder_blue")
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "black_white") //Changes button color
     }
     
     func retrieveItems(){

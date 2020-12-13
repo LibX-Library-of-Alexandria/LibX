@@ -380,7 +380,7 @@ class ListsViewController: UIViewController, UICollectionViewDataSource, UIColle
             for: .documentDirectory,
             in: .userDomainMask
         ).first
-        guard let path = documents?.appendingPathComponent("/\(list["title"]).libx") else {
+        guard let path = documents?.appendingPathComponent("/\(list["title"]!).libx") else {
             return nil
         }
         

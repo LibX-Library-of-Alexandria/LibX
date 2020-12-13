@@ -16,6 +16,7 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var backgroundImageTGR: UITapGestureRecognizer!
     
     var show : [String:Any]!
     var showAddButton : Bool!
@@ -67,13 +68,22 @@ class ShowDetailsViewController: UIViewController {
         }
     }
 
-
+    @IBAction func didTapBackgroundImage(_ sender: Any) {
+        performSegue(withIdentifier: "previewSegue", sender: backgroundImageTGR)
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addViewController = segue.destination as! AddViewController
-        //Lets view controller know what item to add to list
-        addViewController.item = show
-        addViewController.type = "show"
+        if sender as? NSObject == backgroundImageTGR {
+            let previewViewController = segue.destination as! PreviewViewController
+            previewViewController.item = show
+            previewViewController.type = "show"
+        } else {
+            let addViewController = segue.destination as! AddViewController
+            //Lets view controller know what item to add to list
+            addViewController.item = show
+            addViewController.type = "show"
+        }
     }
     
 

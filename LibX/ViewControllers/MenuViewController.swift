@@ -29,11 +29,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.dataSource = self
         
         //Removes text in back button
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "independence")
-        //self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         logoutButton.tintColor = UIColor.white
     }
@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //Change navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "independence")
-        //self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         logoutButton.tintColor = UIColor.white
     }

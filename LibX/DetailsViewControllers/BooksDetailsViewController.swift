@@ -19,6 +19,7 @@ class BooksDetailsViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet var bookCoverTGR: UITapGestureRecognizer!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -75,12 +76,28 @@ class BooksDetailsViewController: UIViewController {
         bookImage.layer.shadowPath = UIBezierPath(rect: bookImage.bounds).cgPath
     }
     
-
+    @IBAction func didTapBookCover(_ sender: Any) {
+        let bookInfo = book["volumeInfo"] as! [String:Any]
+        if (bookInfo["previewLink"] as? String) != nil{
+            performSegue(withIdentifier: "previewSegue", sender: bookCoverTGR)
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "No preview exists for this book", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addViewController = segue.destination as! AddViewController
-        //Lets view controller know what item to add to list
-        addViewController.item = book
-        addViewController.type = "book"
+        if sender as? NSObject == bookCoverTGR{
+            let previewViewController = segue.destination as! PreviewViewController
+            previewViewController.item = book
+            previewViewController.type = "book"
+        } else {
+            let addViewController = segue.destination as! AddViewController
+            //Lets view controller know what item to add to list
+            addViewController.item = book
+            addViewController.type = "book"
+        }
     }
 }

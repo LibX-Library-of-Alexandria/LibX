@@ -16,6 +16,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let defaults = UserDefaults.standard
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        appImage.layer.cornerRadius = 20
+        appImage.layer.masksToBounds = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if defaults.bool(forKey: "loggedIn") == true{
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
+    }
+    
     @IBAction func onLoginButton(_ sender: Any) {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
@@ -29,8 +45,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         print("Successfully logged in")
                     } else {
                         print("Could not sign in: \(error)")
+                        self.usernameTextField.text = ""
+                        self.passwordTextField.text = ""
                         let alert = UIAlertController(title: "Invalid username and/or password", message: "Please verify your information", preferredStyle: UIAlertController.Style(rawValue: 1)!)
-                        
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                             alert.dismiss(animated: true, completion: nil)
                         }))
@@ -39,6 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
     }
+    
     @IBAction func onSignUpButton(_ sender: Any) {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
@@ -57,22 +75,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         print("Could not sign up: \(error)")
                     }
                 }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
-        
-        appImage.layer.cornerRadius = 20
-        appImage.layer.masksToBounds = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if defaults.bool(forKey: "loggedIn") == true{
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
