@@ -41,31 +41,44 @@ class PreviewViewController: UIViewController, WKUIDelegate {
     }
     
     func setTrailer() {
-        let urlString = "https://api.themoviedb.org/3/tv/" + id + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
-                let url = URL(string: urlString)!
-                let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-                let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-                let task = session.dataTask(with: request) { (data, response, error) in
-                   // This will run when the network request returns
-                   if let error = error {
-                      print(error.localizedDescription)
-                   } else if let data = data {
-                      let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                    
-                    self.videos = dataDictionary["results"] as! [[String:Any]]
-                                        
-                    //Retrieves key for video
-                    let video_key = self.videos.first?["key"] as! String
-                    print(video_key)
-                    
-                    //URL for video
-                    let urlString = "https://www.youtube.com/watch?v=" + video_key as! String
-                    let myURL = URL(string: urlString)
-                    let myRequest = URLRequest(url: myURL!)
-                    self.webView.load(myRequest)
-                   }
-                }
-                task.resume()
+        var urlString : String!
+        if type == "movie" {
+            urlString = "https://api.themoviedb.org/3/movie/" + id + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        } else if type == "show" {
+            urlString = "https://api.themoviedb.org/3/tv/" + id + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        }
+        let url = URL(string: urlString)!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+           // This will run when the network request returns
+           if let error = error {
+              print(error.localizedDescription)
+           } else if let data = data {
+              let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            
+            self.videos = dataDictionary["results"] as! [[String:Any]]
+                                
+            //Retrieves key for video
+            if let video_key = self.videos.first?["key"] as? String {
+                print(video_key)
+                
+                //URL for video
+                let urlString = "https://www.youtube.com/watch?v=" + video_key as! String
+                let myURL = URL(string: urlString)
+                let myRequest = URLRequest(url: myURL!)
+                self.webView.load(myRequest)
+            } else {
+                let alert = UIAlertController(title: "Opps!", message: "No trailer available", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+           }
+        }
+        task.resume()
     }
     func setEbook() {
         let bookInfo = item["volumeInfo"] as! [String:Any]
