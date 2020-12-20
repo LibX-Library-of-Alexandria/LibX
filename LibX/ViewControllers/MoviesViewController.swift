@@ -47,6 +47,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         //Remove searchBar border
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor(named: "TableViewColor")?.cgColor
+        searchBar.autocorrectionType = .yes
         
         //Removes text in back button
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

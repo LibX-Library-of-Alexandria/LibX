@@ -23,16 +23,17 @@ class BookCell: UITableViewCell {
         super.awakeFromNib()
         
         bookImage.layer.cornerRadius = 12
+        //bookImage.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         cardView.layer.cornerRadius = 12
-        //cardView.layer.masksToBounds = true
+        cardView.clipsToBounds = true
         
         //Add shadow to card
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.25
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 8
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-
+        shadowView.layer.cornerRadius = 12
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.25
+        shadowView.layer.shadowOffset = .zero
+        shadowView.layer.shadowRadius = 8
+        shadowView.layer.shadowPath = UIBezierPath(rect: shadowView.bounds).cgPath
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
