@@ -44,8 +44,8 @@ An app that allows users to browse through different databases, create curated l
 - [ ] Additional catalogues
 - [ ] User can see skeleton of app when loading
 - [ ] User can like lists
-- [ ] User receives updates on other users' lists
-... more in [issues page](https://github.com/LibX-Library-of-Alexandria/LibX/issues)
+- [ ] User receives updates on other users' lists<br>
+... more in [project page](https://github.com/LibX-Library-of-Alexandria/LibX/projects/1)
 
 
 ### 2. Screen Archetypes
