@@ -123,6 +123,7 @@ An app that allows users to browse through different databases, create curated l
 | itemId   | String   | item's id from api
 | details  | JSON Object | item's specific details information
 | list     | Pointer to List | points to list item belongs to
+| checked  | Boolean | evaluates if item has been checked by user in list
 |createdAt | DateTime | date when post is created *
 | updatedAt| DateTime |	date when post is last updated *
 
