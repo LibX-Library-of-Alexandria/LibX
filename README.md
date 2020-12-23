@@ -40,7 +40,7 @@ An app that allows users to browse through different databases, create curated l
 - [ ] User can follow/friend other users and see other lists
 - [ ] User can associate a list with a single item
 - [ ] User is able to sort items in list by date, alphabetical order, etc.
-- [ ] User can “check off” items in list
+- [x] User can “check off” items in list
 - [ ] Additional catalogues
 - [ ] User can see skeleton of app when loading
 - [ ] User can like lists
